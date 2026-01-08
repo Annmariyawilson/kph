@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KPH Brand Refresh - Deep Red, Charcoal, Gold */
+
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 0 0% 100%;
+    /* Pure White #FFFFFF */
+    --foreground: 210 24% 16%;
+    /* Charcoal #1F2933 */
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    /* Pure White #FFFFFF */
+    --card-foreground: 210 24% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 24% 16%;
+
+    /* Primary - Deep Brand Red #D32F2F */
+    --primary: 358 85% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Charcoal Black #1F2933 */
+    --secondary: 210 24% 16%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted tones */
+    --muted: 210 16% 93%;
+    --muted-foreground: 215 14% 46%;
+
+    /* Accent - Warm Gold #F59E0B */
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success/Trust - Green #16A34A */
+    --success: 142 76% 36%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 24% 90%;
+    --input: 210 24% 90%;
+    --ring: 0 63% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients for Red/Gold theme */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-premium: linear-gradient(180deg, hsl(0 63% 50%) 0%, hsl(0 63% 40%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(45 92% 55%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(210 24% 16% / 0.08);
+    --shadow-elegant: 0 8px 40px -8px hsl(210 24% 16% / 0.12);
+    --shadow-card: 0 2px 12px -2px hsl(210 24% 16% / 0.06);
+
+    /* Sidebar (admin) */
+    --sidebar-background: 210 24% 16%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 63% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 100% / 0.1;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100% / 0.1;
+    --sidebar-ring: 0 63% 50%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 18% 13%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 200 50% 70%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 15 60% 55%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 22%;
+    --ring: 200 50% 70%;
+
+    --sidebar-background: 220 18% 12%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 200 50% 70%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 200 50% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .parallax-layer {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: translateY(110%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
