@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -31,122 +31,108 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Reduce paint on scroll */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* KPH Brand Refresh - Deep Red, Charcoal, Gold */
+/* KPH Brand Refresh - Premium Teal, Navy, Gold */
 
 @layer base {
   :root {
-    /* Backgrounds */
+    /* Backgrounds - Keeping it clean and white as requested */
     --background: 0 0% 100%;
-    /* Pure White #FFFFFF */
-    --foreground: 210 24% 16%;
-    /* Charcoal #1F2933 */
+    --foreground: 0 0% 7%;
+    /* #111111 - Black */
+    /* Charcoal Gray #6B7280 for body text handled via colors */
 
     /* Card surfaces */
     --card: 0 0% 100%;
-    /* Pure White #FFFFFF */
-    --card-foreground: 210 24% 16%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 24% 16%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Primary - Vibrant Red #C4141E */
-    --primary: 356 81% 42%;
+    /* Primary - Royal Purple #8A2BE2 */
+    --primary: 271 76% 51%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Charcoal Black #1F2933 */
-    --secondary: 210 24% 16%;
+    /* Secondary - Warm Orange #F4511E */
+    --secondary: 14 89% 54%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Muted tones */
-    --muted: 210 16% 96%;
-    --muted-foreground: 215 14% 40%;
-
-    /* Accent - Matching Deep Red */
-    /* Accent - Matching Vibrant Red */
-    --accent: 356 81% 42%;
+    /* Accent - Magenta #C2185B */
+    --accent: 336 78% 43%;
     --accent-foreground: 0 0% 100%;
 
-    /* Success/Trust - Green #16A34A (Keep for alerts only if needed) */
-    --success: 142 76% 36%;
+    /* Muted tones */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 24% 90%;
-    --input: 210 24% 90%;
-    --ring: 356 81% 42%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 271 76% 51%;
 
-    --radius: 0.75rem;
+    --radius: 1.25rem;
+    /* Slightly more rounded for a creative feel */
 
-    /* Gradients for Red/White/Black theme */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 95%) 100%);
-    --gradient-premium: linear-gradient(180deg, hsl(356 81% 42%) 0%, hsl(356 81% 30%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(356 81% 42%) 0%, hsl(0 0% 20%) 100%);
+    /* Gradients - Purple to Magenta to Orange */
+    --gradient-hero: linear-gradient(135deg, #8A2BE2 0%, #C2185B 50%, #F4511E 100%);
+    --gradient-creative: linear-gradient(135deg, hsl(271 76% 51%) 0%, hsl(336 78% 43%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(336 78% 43%) 0%, hsl(14 89% 54%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
-    --shadow-elegant: 0 8px 40px -8px hsl(0 0% 0% / 0.15);
-    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.08);
+    /* Shadows - Softer and more playful */
+    --shadow-soft: 0 10px 30px -10px hsl(271 76% 51% / 0.1);
+    --shadow-elegant: 0 20px 50px -15px hsl(271 76% 51% / 0.15);
+    --shadow-card: 0 4px 20px -5px hsl(222 47% 11% / 0.05);
 
-    /* Sidebar (admin) */
-    --sidebar-background: 210 24% 16%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 63% 50%;
+    /* Sidebar (admin) - Keep it professional */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 271 76% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 100% / 0.1;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 100% / 0.1;
-    --sidebar-ring: 0 63% 50%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 271 76% 51%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 40 20% 95%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 18% 13%;
-    --card-foreground: 40 20% 95%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 18% 13%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 200 50% 70%;
-    --primary-foreground: 220 20% 10%;
+    --primary: 180 100% 25%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 40 10% 60%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 15 60% 55%;
-    --accent-foreground: 40 33% 98%;
+    --accent: 45 65% 52%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 60% 45%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 22%;
-    --ring: 200 50% 70%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
 
-    --sidebar-background: 220 18% 12%;
-    --sidebar-foreground: 40 20% 90%;
-    --sidebar-primary: 200 50% 70%;
-    --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 40 20% 90%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 200 50% 70%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 100% 25%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 180 100% 25%;
   }
 }
 

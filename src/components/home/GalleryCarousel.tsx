@@ -40,18 +40,17 @@ export const GalleryCarousel = ({ projects }: GalleryCarouselProps) => {
             ]}
             className="w-full"
         >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-4 md:-ml-6">
                 {displayProjects.map((project, index) => (
-                    <CarouselItem key={`${project.id}-${index}`} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={`${project.id}-${index}`} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
                         <ProjectCard project={project} />
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <div className="flex justify-end gap-2 mt-8 pr-4">
-                <CarouselPrevious className="static translate-y-0 hover:bg-primary hover:text-white transition-colors" />
-                <CarouselNext className="static translate-y-0 hover:bg-primary hover:text-white transition-colors" />
+            <div className="flex justify-center lg:justify-end gap-2 mt-12 px-4">
+                <CarouselPrevious className="static translate-y-0 w-14 h-14 rounded-none border border-slate-200 bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300" />
+                <CarouselNext className="static translate-y-0 w-14 h-14 rounded-none border border-slate-200 bg-white hover:bg-black hover:text-white hover:border-black transition-all duration-300" />
             </div>
         </Carousel>
     )
 }
-

@@ -1,191 +1,128 @@
-import { useEffect, useState, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import QuickContactForm from "./QuickContactForm";
+import {
+  ShieldCheck,
+  Sparkles,
+  UserCheck,
+  PaintBucket,
+  ArrowRight,
+  ChevronRight,
+  Percent
+} from "lucide-react";
 
 const HeroSection = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      image: "/images/asianpaints.png",
-      title: "Asian Paints Royale",
-      brand: "Asian Paints"
-    },
-    {
-      image: "/images/berger-paint-silk.png",
-      title: "Berger Silk",
-      brand: "Berger Paints"
-    },
-    {
-      image: "/images/berger-paint.png",
-      title: "Berger Premium",
-      brand: "Berger Paints"
-    },
-    {
-      image: "/images/berger.png",
-      title: "Berger Paints",
-      brand: "Berger Paints"
-    },
-    {
-      image: "/images/birla-color-smart.png",
-      title: "Birla Color Smart",
-      brand: "Birla Opus"
-    },
-    {
-      image: "/images/weathercoat-long-life-can.png",
-      title: "WeatherCoat Long Life",
-      brand: "Berger Paints"
-    },
-    {
-      image: "/images/indigo-paints.png",
-      title: "Indigo Gloss",
-      brand: "Indigo Paints"
-    },
-    {
-      image: "/images/birla-ever-clear.png",
-      title: "Birla Ever Clear",
-      brand: "Birla Opus"
-    },
-    {
-      image: "/images/JSW-Opera.png",
-      title: "JSW Opera",
-      brand: "JSW Paints"
-    },
-    {
-      image: "/images/birla-opus-power-bright-shine.png",
-      title: "Birla Opus Power",
-      brand: "Birla Opus"
-    },
-    {
-      image: "/images/berger-paint-silk.png",
-      title: "Berger Silk Glamor",
-      brand: "Berger Paints"
-    }
-  ];
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    setMousePos({
-      x: (e.clientX / window.innerWidth - 0.5) * 30,
-      y: (e.clientY / window.innerHeight - 0.5) * 30,
-    });
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
-
-  const optimizedSlides = useMemo(() => slides.slice(0, 6), []); // Limit to 6 slides for performance
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % optimizedSlides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [optimizedSlides.length]);
-
   return (
-    <section id="hero" className="relative min-h-[90vh] lg:min-h-[95vh] flex flex-col lg:flex-row items-center overflow-hidden bg-white pt-24 lg:pt-20">
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(1deg); }
-        }
-        .animate-float-fast {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
+    <section id="hero" className="relative lg:min-h-[85vh] min-h-[600px] flex flex-col justify-between overflow-hidden bg-white">
 
-      {/* Background patterns */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1920&auto=format&fit=crop"
+          alt="Premium Dark Interior Finish"
+          className="w-full h-full object-cover scale-105"
+        />
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0">
+      {/* MAIN CONTENT AREA */}
+      <div className="container mx-auto px-4 relative z-30 flex-grow flex items-center pt-24 pb-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full">
 
-        {/* Left Column: Content Area */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest mb-6 lg:mb-8 animate-slide-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            {slides[currentSlide].brand}
+          {/* LEFT CONTENT: Simple & Catchy */}
+          <div className="w-full lg:w-[60%] space-y-10 animate-fade-in text-center lg:text-left">
+            <div className="space-y-6">
+              {/* Trust Badge */}
+              <div className="inline-flex items-center gap-3 px-4 py-2 border-l-4 border-primary bg-white/10 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-[0.3em] shadow-2xl">
+                <Sparkles className="w-4 h-4 text-primary" />
+                Since 1995 • St. George Complex
+              </div>
+
+              {/* Catchy Main Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold leading-[0.9] tracking-tighter text-white uppercase">
+                THE PAINT <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary">HOUSE</span>
+              </h1>
+
+              {/* Simple, True Subtext */}
+              <p className="font-medium text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed mx-auto lg:mx-0 border-l-2 border-primary/50 pl-6">
+                The <span className="text-white font-bold">only wholesale paint dealer</span> in Kuttanad. <br />
+                We offer <span className="text-white font-bold">10-30% discounts</span> on premium brands like Asian Paints, Berger, and JSW.
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+              <a href="tel:04772212444" className="inline-flex items-center justify-center bg-primary text-white hover:bg-white hover:text-black font-black px-10 py-7 text-xs rounded-none transition-all duration-300 w-full sm:w-auto uppercase tracking-widest border border-primary">
+                Call For Best Price
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+              <a href="#brands" onClick={(e) => { e.preventDefault(); document.querySelector('.animate-marquee')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }} className="inline-flex items-center justify-center border border-white/30 text-white hover:bg-white hover:text-black font-black px-10 py-7 text-xs rounded-none transition-all duration-300 w-full sm:w-auto bg-transparent uppercase tracking-widest cursor-pointer">
+                Our Brands
+              </a>
+            </div>
+
+            {/* Key Facts (Correct Details) */}
+            <div className="pt-8 flex flex-wrap items-center justify-center lg:justify-start gap-12 border-t border-white/10 mt-8">
+              {[
+                { label: "Legacy", value: "30 YEARS" },
+                { label: "Discount", value: "UP TO 30%" },
+                { label: "Warranty", value: "10 YEAR" }
+              ].map((badge, idx) => (
+                <div key={idx} className="flex flex-col items-center lg:items-start group cursor-default">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">
+                    {badge.label}
+                  </span>
+                  <span className="text-2xl font-black text-white tracking-tighter shadow-black drop-shadow-lg">
+                    {badge.value}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <h1 className="font-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-[0.9] tracking-tighter mb-6 lg:mb-8 uppercase animate-slide-up stagger-1">
-            Transform <br />
-            <span className="text-primary">Your World</span>
-          </h1>
+          {/* RIGHT CONTENT: Contact Form */}
+          <div className="w-full lg:w-auto shrink-0 flex justify-center lg:justify-end relative">
+            {/* Decorative glow behind form */}
+            <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-40 animate-pulse hidden lg:block" />
+            <div className="relative z-10 w-full max-w-md">
+              <QuickContactForm />
+            </div>
+          </div>
 
-          <p className="font-body text-base sm:text-lg md:text-xl text-foreground/70 max-w-lg mb-8 lg:mb-10 leading-tight animate-slide-up stagger-2">
-            Authorized dealers for Asian Paints, Berger & JSW. Premium solutions for Edathua's finest homes.
-          </p>
+        </div>
+      </div>
 
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 animate-slide-up stagger-3">
-            <a href="#gallery">
-              <Button
-                size="xl"
-                className="bg-primary hover:bg-black text-white font-bold px-8 lg:px-10 py-6 rounded-none shadow-none transition-all duration-300 transform hover:skew-x-2"
-              >
-                See Recent Projects
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+      {/* BOTTOM BAR: Value Props */}
+      <div className="relative z-30 bg-black/90 backdrop-blur-sm py-6 border-t border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-8">
+            <div className="text-primary font-black text-[10px] uppercase tracking-[0.4em] hidden lg:block">
+              Why Choose KPH?
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+              {[
+                { icon: UserCheck, text: "Authorized Dealer" },
+                { icon: ShieldCheck, text: "Single Price Any Color" },
+                { icon: Percent, text: "Lowest Price Guarantee" },
+                { icon: PaintBucket, text: "Expert Consultation" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <item.icon className="w-4 h-4 text-primary" />
+                  <span className="text-[11px] font-bold text-slate-300 uppercase tracking-widest">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <a href="#about" className="text-white font-bold text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">
+              Read Our Story <ChevronRight className="w-3 h-3" />
             </a>
           </div>
-
-          <div className="mt-10 lg:mt-12 text-xs font-medium text-foreground/40 max-w-sm">
-            Providing lasting finishes and protection for generations. Trusted by over 5000+ homeowners in Edathua since 1995.
-          </div>
-        </div>
-
-        {/* Right Column: Carousel Visual */}
-        <div className="w-full lg:w-1/2 relative flex items-center justify-center mt-8 lg:mt-0 h-[400px] sm:h-[500px] lg:h-[600px]">
-
-          {/* Carousel Images with Fixed Size */}
-          <div className="relative z-20 w-[260px] h-[260px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] flex items-center justify-center pointer-events-none">
-            {optimizedSlides.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute transition-all duration-1000 ease-in-out flex items-center justify-center ${index === currentSlide
-                  ? "opacity-100 z-10"
-                  : "opacity-0 z-0"
-                  }`}
-                style={{
-                  transform: index === currentSlide
-                    ? `perspective(1000px) rotateY(${mousePos.x * 0.1}deg) rotateX(${mousePos.y * -0.1}deg)`
-                    : 'none',
-                }}
-              >
-                <div className={`relative w-[240px] h-[240px] sm:w-[380px] sm:h-[380px] lg:w-[480px] lg:h-[480px] flex items-center justify-center ${index === currentSlide ? 'animate-float-fast' : ''}`}>
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    width={500}
-                    height={500}
-                    className="w-full h-full object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.3)] filter brightness-110"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination Indicators - Compact Version */}
-          <div className="absolute bottom-0 lg:bottom-[10%] right-0 left-0 lg:left-auto lg:right-[10%] z-30 flex justify-center lg:justify-end gap-2 px-4">
-            {optimizedSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSlide(i)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentSlide
-                  ? "bg-primary scale-125"
-                  : "bg-gray-300 hover:bg-primary/50"
-                  }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
-    </section>
+
+    </section >
   );
 };
 

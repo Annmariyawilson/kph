@@ -29,16 +29,16 @@ import {
     MapPin,
     Phone,
     Mail,
-    MessageSquare,
+    ArrowRight,
 } from "lucide-react";
 
 /* -------------------- Schema -------------------- */
 const formSchema = z.object({
-    name: z.string().min(2),
-    phone: z.string().min(10),
+    name: z.string().min(2, "Name is required"),
+    phone: z.string().min(10, "Valid phone number is required"),
     email: z.string().email().optional().or(z.literal("")),
-    district: z.string().min(1),
-    interestedIn: z.string().min(1),
+    district: z.string().min(1, "Please select a district"),
+    interestedIn: z.string().min(1, "Please select a service"),
     sqft: z.string().optional(),
     projectDetails: z.string().optional(),
 });
@@ -137,221 +137,229 @@ Details: ${values.projectDetails || "N/A"}`;
     };
 
     return (
-        <section id="contact" className="section-padding bg-accent/10">
+        <section id="contact" className="py-24 bg-slate-100 relative">
             <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="flex flex-col lg:flex-row gap-16 xl:gap-24">
 
-                    {/* LEFT INFO */}
-                    <div className="space-y-10">
-                        <div>
-                            <span className="text-primary text-sm font-bold tracking-widest uppercase">
+                    {/* Left: Project Info */}
+                    <div className="lg:w-5/12 pt-4">
+                        <div className="pb-8 border-b border-black/10 mb-8">
+                            <span className="block text-xs font-bold tracking-[0.2em] text-slate-500 mb-4 uppercase">
                                 Contact Us
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-3">
-                                Let’s Talk About <br /> Your Project
+                            <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[0.95] mb-6">
+                                VISIT OUR <br />
+                                <span className="text-slate-400">SHOWROOM</span> <br />
+                                TODAY
                             </h2>
-                            <p className="text-slate-600 mt-5 max-w-md">
-                                Share your requirements and our painting experts will reach out
-                                with the best solution.
+                            <p className="text-slate-600 font-medium leading-relaxed max-w-sm">
+                                Located in St. George Shopping Complex, Edathua. We are open for all your painting needs.
                             </p>
                         </div>
 
-                        <div className="space-y-6">
+                        <div className="grid gap-8">
                             {[
-                                {
-                                    icon: MapPin,
-                                    title: "Visit Us",
-                                    value:
-                                        "St. George Shopping Complex, Edathua, Kerala 689573",
-                                },
-                                {
-                                    icon: Phone,
-                                    title: "Call Us",
-                                    value: "+91 830 192 1926",
-                                },
-                                {
-                                    icon: Mail,
-                                    title: "Email",
-                                    value: "kphpaints@gmail.com",
-                                },
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-5">
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                                        <item.icon className="w-5 h-5" />
+                                { label: "Call Us", value: "0477-2212444 | 9446194178", icon: Phone },
+                                { label: "Alternate Mobile", value: "8156965090", icon: Phone },
+                                { label: "Email Address", value: "kphpaints@gmail.com", icon: Mail },
+                                { label: "Location", value: "St. George Shopping Complex, Edathua", icon: MapPin },
+                            ].map((item, idx) => (
+                                <div key={idx} className="group">
+                                    <div className="flex items-center gap-3 mb-1 text-slate-400">
+                                        <item.icon className="w-4 h-4" />
+                                        <span className="text-[10px] font-bold uppercase tracking-widest">{item.label}</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900">{item.title}</h4>
-                                        <p className="text-slate-600 text-sm">{item.value}</p>
-                                    </div>
+                                    <p className="text-lg font-bold text-slate-900 group-hover:text-black transition-colors whitespace-pre-line">
+                                        {item.value}
+                                    </p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* FORM */}
-                    <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-slate-100">
-                        <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    {/* Right: The Form */}
+                    <div className="lg:w-7/12">
+                        <div className="bg-white p-8 md:p-12 shadow-[0px_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-200 relative">
+                            {/* Decorative Accent */}
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-bl-[80px] -z-0" />
 
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Name</FormLabel>
-                                            <FormControl>
-                                                <Input {...field} placeholder="Your name" />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="phone"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Phone</FormLabel>
-                                            <FormControl>
-                                                <Input {...field} placeholder="+91 XXXXX XXXXX" />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="district"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>District</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Form {...form}>
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 relative z-10">
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <FormField
+                                            control={form.control}
+                                            name="name"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">Full Name</FormLabel>
                                                     <FormControl>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select" />
-                                                        </SelectTrigger>
+                                                        <Input {...field} placeholder="Enter your name" className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black transition-all placeholder:text-slate-400" />
                                                     </FormControl>
-                                                    <SelectContent>
-                                                        <SelectItem value="Alappuzha">Alappuzha</SelectItem>
-                                                        <SelectItem value="Pathanamthitta">Pathanamthitta</SelectItem>
-                                                        <SelectItem value="Kottayam">Kottayam</SelectItem>
-                                                        <SelectItem value="Other">Other</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <FormField
-                                        control={form.control}
-                                        name="sqft"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Sq. Feet</FormLabel>
-                                                <FormControl>
-                                                    <Input {...field} placeholder="Ex: 1200" />
-                                                </FormControl>
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-
-                                <FormField
-                                    control={form.control}
-                                    name="interestedIn"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Service</FormLabel>
-                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="Interior Painting">Interior Painting</SelectItem>
-                                                    <SelectItem value="Exterior Painting">Exterior Painting</SelectItem>
-                                                    <SelectItem value="Waterproofing">Waterproofing</SelectItem>
-                                                    <SelectItem value="Full Home Makeover">Full Home Makeover</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="projectDetails"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Project Details</FormLabel>
-                                            <FormControl>
-                                                <Textarea {...field} placeholder="Tell us about your project" />
-                                            </FormControl>
-                                        </FormItem>
-                                    )}
-                                />
-
-                                {/* Upload */}
-                                <div className="space-y-3">
-                                    <div className="border-2 border-dashed rounded-xl p-4 text-center relative cursor-pointer">
-                                        <input
-                                            type="file"
-                                            multiple
-                                            accept="image/*"
-                                            onChange={handleFileChange}
-                                            className="absolute inset-0 opacity-0"
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
                                         />
-                                        <Upload className="mx-auto text-slate-400" />
-                                        <p className="text-xs mt-2 text-slate-500">
-                                            Upload reference images (max 5)
-                                        </p>
+                                        <FormField
+                                            control={form.control}
+                                            name="phone"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">Phone Number</FormLabel>
+                                                    <FormControl>
+                                                        <Input {...field} placeholder="+91 ..." className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black transition-all placeholder:text-slate-400" />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
                                     </div>
 
-                                    {/* Image Preview */}
-                                    {imageFiles.length > 0 && (
-                                        <div className="grid grid-cols-4 gap-3">
-                                            {imageFiles.map((file, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="relative group aspect-square rounded-lg overflow-hidden border"
-                                                >
-                                                    <img
-                                                        src={URL.createObjectURL(file)}
-                                                        alt="preview"
-                                                        className="w-full h-full object-cover"
-                                                    />
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => removeFile(index)}
-                                                        className="absolute top-1 right-1 bg-black/60 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
-                                                    >
-                                                        <X className="w-3 h-3" />
-                                                    </button>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <FormField
+                                            control={form.control}
+                                            name="district"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">District</FormLabel>
+                                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                        <FormControl>
+                                                            <SelectTrigger className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900 data-[placeholder]:text-slate-400 hover:bg-slate-50 transition-colors">
+                                                                <SelectValue placeholder="Select District" />
+                                                            </SelectTrigger>
+                                                        </FormControl>
+                                                        <SelectContent className="rounded-none border border-black bg-white shadow-xl max-h-[300px] z-50">
+                                                            {["Alappuzha", "Pathanamthitta", "Kottayam", "Other"].map(dist => (
+                                                                <SelectItem
+                                                                    key={dist}
+                                                                    value={dist}
+                                                                    className="rounded-none cursor-pointer focus:bg-black focus:text-white data-[state=checked]:bg-slate-100 py-3 text-xs uppercase tracking-widest font-medium transition-colors"
+                                                                >
+                                                                    {dist}
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="sqft"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">Square Feet</FormLabel>
+                                                    <FormControl>
+                                                        <Input {...field} placeholder="Approx Area" className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black transition-all placeholder:text-slate-400" />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+
+                                    <FormField
+                                        control={form.control}
+                                        name="interestedIn"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">Service Required</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900 data-[placeholder]:text-slate-400 hover:bg-slate-50 transition-colors">
+                                                            <SelectValue placeholder="Select Service" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent className="rounded-none border border-black bg-white shadow-xl max-h-[300px] z-50">
+                                                        {["Interior Painting", "Exterior Painting", "Waterproofing", "Full Home Makeover"].map(service => (
+                                                            <SelectItem
+                                                                key={service}
+                                                                value={service}
+                                                                className="rounded-none cursor-pointer focus:bg-black focus:text-white data-[state=checked]:bg-slate-100 py-3 text-xs uppercase tracking-widest font-medium transition-colors"
+                                                            >
+                                                                {service}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="projectDetails"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">Project Details</FormLabel>
+                                                <FormControl>
+                                                    <Textarea {...field} placeholder="Tell us more about your project needs..." className="min-h-[120px] bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black transition-all p-4 resize-none placeholder:text-slate-400" />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <div className="space-y-4">
+                                        <div className="border border-slate-900 border-dashed hover:border-black bg-white hover:bg-slate-50 transition-all p-8 text-center relative cursor-pointer group rounded-none">
+                                            <input
+                                                type="file"
+                                                multiple
+                                                accept="image/*"
+                                                onChange={handleFileChange}
+                                                className="absolute inset-0 opacity-0 z-20 cursor-pointer"
+                                            />
+                                            <div className="flex flex-col items-center gap-3">
+                                                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                                                    <Upload className="w-5 h-5" />
                                                 </div>
-                                            ))}
+                                                <div>
+                                                    <span className="text-sm font-bold text-slate-900 block">Click to Upload Images</span>
+                                                    <span className="text-xs text-slate-500">Max 5 images (JPG, PNG)</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    )}
-                                </div>
 
-                                <Button
-                                    type="submit"
-                                    disabled={loading}
-                                    className="w-full h-12 text-base font-bold"
-                                >
-                                    {loading ? (
-                                        <Loader2 className="animate-spin w-4 h-4 mr-2" />
-                                    ) : (
-                                        <MessageSquare className="w-4 h-4 mr-2" />
-                                    )}
-                                    Send Enquiry
-                                </Button>
+                                        {imageFiles.length > 0 && (
+                                            <div className="flex flex-wrap gap-4">
+                                                {imageFiles.map((file, index) => (
+                                                    <div key={index} className="relative w-20 h-20 bg-slate-100 border border-slate-200 rounded-none">
+                                                        <img
+                                                            src={URL.createObjectURL(file)}
+                                                            alt="preview"
+                                                            className="w-full h-full object-cover"
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => removeFile(index)}
+                                                            className="absolute -top-2 -right-2 bg-black text-white p-1 rounded-full hover:bg-red-600 transition-colors"
+                                                        >
+                                                            <X className="w-3 h-3" />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
 
-                            </form>
-                        </Form>
+                                    <Button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full h-16 bg-black text-white hover:bg-zinc-800 rounded-none text-sm font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 group"
+                                    >
+                                        {loading ? (
+                                            <Loader2 className="animate-spin w-5 h-5" />
+                                        ) : (
+                                            <>
+                                                Submit Free Enquiry
+                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                            </>
+                                        )}
+                                    </Button>
+                                </form>
+                            </Form>
+                        </div>
                     </div>
                 </div>
             </div>

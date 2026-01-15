@@ -18,9 +18,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Montserrat"', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
-        hero: ['Montserrat', 'sans-serif'],
+        heading: ['"Poppins"', 'sans-serif'],
+        body: ['"Poppins"', 'sans-serif'],
+        hero: ['"Poppins"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -28,6 +28,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        charcoal: "#6B7280",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -86,7 +87,7 @@ export default {
       },
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
-        "gradient-premium": "var(--gradient-premium)",
+        "gradient-creative": "var(--gradient-creative)",
         "gradient-warm": "var(--gradient-warm)",
       },
       keyframes: {

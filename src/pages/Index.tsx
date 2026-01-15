@@ -7,6 +7,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 // Lazy load heavy sections for better performance
 const BrandMarquee = lazy(() => import("@/components/home/BrandMarquee"));
 const AboutSection = lazy(() => import("@/components/home/AboutSection"));
+const ServicesSection = lazy(() => import("@/components/home/ServicesSection"));
 const WhyUsSection = lazy(() => import("@/components/home/WhyUsSection"));
 const TestimonialsSection = lazy(() => import("@/components/home/TestimonialsSection"));
 const GallerySection = lazy(() => import("@/components/home/GallerySection"));
@@ -31,16 +32,16 @@ const Index = () => {
       <main>
         <HeroSection />
         <Suspense fallback={<SectionLoader />}>
-          <AboutSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
           <BrandMarquee />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
-          <WhyUsSection />
+          <ServicesSection />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
-          <TestimonialsSection />
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <WhyUsSection />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <GallerySection />
@@ -48,6 +49,9 @@ const Index = () => {
         <Suspense fallback={<SectionLoader />}>
           <CTASection />
         </Suspense>
+        {/* <Suspense fallback={<SectionLoader />}>
+          <TestimonialsSection />
+        </Suspense> */}
       </main>
       <Footer />
       <WhatsAppFloat />

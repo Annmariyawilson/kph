@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Menu, X, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 
 interface HeaderProps {
   forceWhite?: boolean;
@@ -14,7 +12,7 @@ const Header = ({ forceWhite = false }: HeaderProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -23,17 +21,25 @@ const Header = ({ forceWhite = false }: HeaderProps) => {
   const navLinks = [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
-    { name: "Services", href: "#why-us" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Services", href: "#services" },
+    { name: "Showroom", href: "#showroom" },
     { name: "Gallery", href: "#gallery" },
-
     { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 60; // New lower header height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -50,31 +56,36 @@ const Header = ({ forceWhite = false }: HeaderProps) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen || forceWhite
-        ? "bg-white shadow-soft py-0.5"
-        : "bg-transparent py-2"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 bg-white ${isScrolled ? "py-1 shadow-md" : "py-2 shadow-sm"
         }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between relative">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')}>
-              <img
-                src="/icons/icon.png"
-                alt="KPH Logo"
-                className={`transition-all duration-300 object-contain cursor-pointer ${isScrolled ? "w-14 h-14" : "w-16 h-16"}`}
-              />
+        <div className="flex items-center justify-between gap-8">
+
+          {/* Brand / Logo */}
+          <div className="flex-shrink-0">
+            <a
+              href="#hero"
+              onClick={(e) => handleNavClick(e, '#hero')}
+              className="flex items-center group cursor-pointer"
+            >
+              <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-transform group-hover:scale-105">
+                <img
+                  src="/icons/icon.png"
+                  alt="KPH Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <nav className="hidden lg:flex items-center gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="font-body text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+                className="px-4 py-2 text-[12px] font-bold uppercase tracking-widest text-slate-600 hover:text-primary transition-colors rounded-lg hover:bg-slate-50"
                 onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.name}
@@ -82,56 +93,68 @@ const Header = ({ forceWhite = false }: HeaderProps) => {
             ))}
           </nav>
 
-          {/* Contact Button */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+914772212217" className="flex items-center gap-2 text-primary font-bold">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm">+91 477 2212217</span>
-            </a>
-          </div>
+          {/* Header Actions */}
+          <div className="flex items-center gap-3 md:gap-6">
+            <div className="hidden xl:flex items-center gap-3 border-r border-slate-100 pr-6">
+              <div className="p-1.5 rounded-full bg-primary/10 text-primary">
+                <Phone size={14} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
+                  Call Expert
+                </span>
+                <span className="text-xs font-bold tracking-tight text-foreground">
+                  0477-2212444
+                </span>
+              </div>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
+            <Button
+              onClick={handleContactClick}
+              className="hidden sm:flex rounded-none px-6 py-4 h-10 text-[10px] font-extrabold uppercase tracking-[0.2em] transition-all bg-foreground text-white hover:bg-primary shadow-sm"
+            >
+              ENQUIRE
+            </Button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 rounded bg-slate-100 text-foreground"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-border">
-          <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="font-body text-lg font-medium text-foreground/80 py-3 border-b border-border/50 active:text-primary transition-colors"
-                onClick={(e) => handleNavClick(e, link.href)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="pt-4 flex flex-col gap-4">
-              <a href="tel:+914772212217" className="flex items-center gap-2 text-primary font-bold">
-                <Phone className="w-5 h-5" />
-                <span>+91 477 2212217</span>
-              </a>
-              <Button
-                className="w-full bg-primary py-6 rounded-xl"
-                onClick={handleContactClick}
-              >
-                Contact Us
-              </Button>
-            </div>
+      {/* Mobile Navigation Drawer */}
+      <div className={`lg:hidden fixed inset-x-0 top-[calc(100%-1px)] bg-white border-t border-slate-100 shadow-2xl transition-all duration-500 overflow-hidden ${isMobileMenuOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"
+        }`}>
+        <div className="p-4 space-y-1">
+          {navLinks.map((link, idx) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="flex items-center justify-between p-3 rounded-lg bg-slate-50 hover:bg-primary/5 text-foreground font-bold text-[12px] tracking-widest uppercase transition-all"
+            >
+              {link.name}
+              <ChevronRight size={14} className="text-primary" />
+            </a>
+          ))}
+
+          <div className="pt-3 grid gap-3">
+            <Button
+              onClick={handleContactClick}
+              className="w-full py-6 text-[11px] font-bold tracking-widest uppercase rounded-none"
+            >
+              FREE CONSULTATION
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
 
 export default Header;
-

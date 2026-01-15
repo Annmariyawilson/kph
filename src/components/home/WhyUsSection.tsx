@@ -1,104 +1,147 @@
-import { Store, Tag, Briefcase, PaintBucket, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Store, Tag, Briefcase, MapPin, ArrowUpRight } from "lucide-react";
 
 const WhyUsSection = () => {
   const services = [
     {
+      id: "01",
       icon: Store,
-      title: "Leading Brands",
-      description: "All leading paint brands under one roof, including Asian Paints, Berger, Birla Opus, JSW Paints, Indigo Paints, and more—ensuring the right solution for every surface.",
-      color: "bg-black text-white",
+      title: "Wholesale Dealer",
+      description: "We are the only wholesale paint dealer in the Kuttanad region, serving both individual homeowners and professional contractors.",
+      highlight: false,
     },
     {
+      id: "02",
       icon: Tag,
-      title: "Best Pricing",
-      description: "Enjoy premium quality paints at affordable rates with exclusive discounts ranging from 10% to 30%, making us one of the best-priced paint stores in Edathua.",
-      color: "bg-red-600 text-white",
-    },
-    {
-      icon: Briefcase,
-      title: "Executive Works & Trusted References",
-      description: "Proven experience in executing interior, exterior, and waterproofing works for homes, villas, apartments, and commercial spaces. Trusted by satisfied customers and backed by strong local references across Edathua and nearby areas.",
-      color: "bg-black text-white",
+      title: "Unbeatable Prices",
+      description: "Enjoy discounts ranging from 10% to 30% on cash purchases. We offer the lowest prices on premium branded paints.",
       highlight: true,
     },
     {
-      icon: PaintBucket,
-      title: "Complete Paint Solutions",
-      description: "From paint selection and color guidance to waterproofing and wall care solutions, we provide end-to-end painting services under one roof.",
-      color: "bg-red-600 text-white",
+      id: "03",
+      icon: Briefcase,
+      title: "Transparent Pricing",
+      description: "Fair and open pricing models, including JSW Paint's innovative 'Any Colour One Price' strategy.",
+      highlight: false,
+    },
+    {
+      id: "04",
+      icon: MapPin,
+      title: "Strategic Location",
+      description: "Easily accessible at St. George Shopping Complex and Kalangara Towers, Edathua. Central access for all of Kuttanad.",
+      highlight: false,
     }
   ];
 
   return (
-    <section id="why-us" className="py-16 lg:py-20 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -z-10 skew-x-12 translate-x-32" />
+    <section id="why-us" className="py-20 relative overflow-hidden bg-[#0a0a0a] text-white">
+      {/* Creative Background: Architectural Grid & Spotlights */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-          {/* Left Column: Heading & Intro */}
-          <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
-            <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 font-bold text-xs uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-                Why Choose KPH
-              </span>
-              <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-black leading-tight animate-slide-up">
-                Trusted Dealer <br />
-                <span className="text-primary">
-                  in Edathua
-                </span>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+
+          {/* Left Side: Sticky Creative Header */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8 pt-8">
+            <div className="inline-block relative">
+              <span className="text-8xl font-black text-white/5 absolute -top-12 -left-8 select-none">WHY</span>
+              <h2 className="relative font-heading text-5xl md:text-6xl font-black leading-none tracking-tighter">
+                WHY CHOOSE <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">KALANGARA?</span>
               </h2>
             </div>
 
-            <p className="font-body text-lg text-slate-600 leading-relaxed text-justify">
-              <strong>Kalangara Paint House</strong> is a trusted paint dealer in Edathua, offering premium branded paints, expert guidance, and proven work experience. We are known for quality service, competitive pricing, and successfully executed residential and commercial painting works.
+            <p className="text-lg text-slate-400 font-light leading-relaxed border-l-2 border-indigo-500/30 pl-6">
+              Use our "Home Delivery" service to order premium paints from home, or visit us for expert advice. We combine wholesale pricing with world-class service.
             </p>
 
-            <div className="pt-4 hidden lg:block">
-              <div className="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">
-                Our Strengths
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <span className="px-4 py-2 bg-white border border-slate-100 rounded-lg shadow-sm text-slate-600 text-sm font-medium">Original Brands</span>
-                <span className="px-4 py-2 bg-white border border-slate-100 rounded-lg shadow-sm text-slate-600 text-sm font-medium">Expert Team</span>
-                <span className="px-4 py-2 bg-white border border-slate-100 rounded-lg shadow-sm text-slate-600 text-sm font-medium">Local Trust</span>
-              </div>
+            <div className="flex gap-4 pt-4">
+              <div className="h-px flex-1 bg-gradient-to-r from-indigo-500/50 to-transparent self-center"></div>
+              <span className="text-xs uppercase tracking-[0.3em] text-slate-500 font-semibold">SINCE 1995</span>
             </div>
           </div>
 
-          {/* Right Column: Timeline / Cards */}
-          <div className="lg:col-span-7 relative">
-            {/* Vertical Line */}
-            <div className="absolute left-[27px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-slate-200 via-slate-200 to-transparent lg:left-[35px]" />
-
-            <div className="space-y-12">
+          {/* Right Side: Masonry/Staggered Grid */}
+          <div className="lg:col-span-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <div key={index} className="relative flex gap-6 group">
-                  {/* Icon Marker */}
-                  <div className="relative shrink-0">
-                    <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center shadow-lg border-4 border-white relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 ${service.color}`}>
-                      <service.icon className="w-6 h-6 lg:w-7 lg:h-7" />
+                <div
+                  key={index}
+                  className={`group relative min-h-[320px] p-8 flex flex-col justify-between border transition-all duration-500 hover:-translate-y-2
+                    ${index % 2 !== 0 ? 'md:translate-y-16' : ''} /* Stagger Effect */
+                    ${service.highlight
+                      ? 'bg-white text-slate-950 border-white shadow-[0_0_50px_-12px_rgba(255,255,255,0.3)]'
+                      : 'bg-white/5 border-white/10 hover:border-indigo-400/50 hover:bg-white/10'
+                    }
+                  `}
+                >
+                  {/* Large Background Number */}
+                  <span className={`absolute top-4 right-6 text-8xl font-black opacity-10 leading-none select-none transition-all duration-700 group-hover:scale-110 group-hover:opacity-20 
+                    ${service.highlight ? 'text-slate-900' : 'text-white'}`}>
+                    {service.id}
+                  </span>
+
+                  {/* Icon & Connector */}
+                  <div className="relative mb-8">
+                    <div className={`w-14 h-14 flex items-center justify-center text-xl font-bold border-2 transition-all duration-300
+                       ${service.highlight
+                        ? 'border-slate-900 text-slate-900'
+                        : 'border-white/20 text-white group-hover:border-indigo-400 group-hover:text-indigo-400'
+                      }
+                    `}>
+                      <service.icon strokeWidth={1.5} className="w-6 h-6" />
                     </div>
                   </div>
 
-                  {/* Content Card */}
-                  <div className={`flex-1 bg-white p-6 md:p-8 rounded-3xl border transition-all duration-300 hover-lift ${service.highlight ? 'border-red-100 shadow-xl shadow-red-100/20 ring-1 ring-red-50' : 'border-slate-100 shadow-sm hover:shadow-lg hover:border-slate-200'}`}>
-                    <h3 className="font-heading text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className={`text-2xl font-bold font-heading mb-3 uppercase tracking-wider
+                      ${service.highlight ? 'text-slate-900' : 'text-white group-hover:text-indigo-300'}
+                    `}>
                       {service.title}
-                      {service.highlight && <CheckCircle2 className="w-5 h-5 text-red-500 fill-red-50" />}
                     </h3>
-                    <p className="font-body text-slate-600 leading-relaxed text-sm md:text-base">
+                    <p className={`text-sm leading-relaxed font-light
+                      ${service.highlight ? 'text-slate-600' : 'text-slate-400'}
+                    `}>
                       {service.description}
                     </p>
                   </div>
+
+                  {/* Interactive Corner Arrow */}
+                  <div className={`absolute bottom-6 right-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1
+                    ${service.highlight ? 'text-slate-900' : 'text-white/30 group-hover:text-white'}
+                  `}>
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+
+                  {/* Decorative Lines */}
+                  {!service.highlight && (
+                    <>
+                      <div className="absolute top-0 left-0 w-8 h-[1px] bg-white/20 group-hover:bg-indigo-400 transition-colors" />
+                      <div className="absolute top-0 left-0 w-[1px] h-8 bg-white/20 group-hover:bg-indigo-400 transition-colors" />
+                    </>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
         </div>
+
+        {/* Bottom Flow Graphic */}
+        <div className="mt-32 border-t border-white/5 pt-8 flex justify-between items-end opacity-50">
+          <div className="text-[10px] uppercase text-slate-600 tracking-widest max-w-[200px]">
+            We sell protection for your home.
+          </div>
+          <div className="flex gap-2">
+            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-indigo-500/50 rounded-full" />
+            <div className="w-2 h-2 bg-indigo-500/20 rounded-full" />
+          </div>
+        </div>
+
       </div>
     </section>
   );
