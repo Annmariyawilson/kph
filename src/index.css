@@ -5,9 +5,11 @@
 @tailwind utilities;
 
 /* Performance optimizations */
-img {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px 600px;
+/* Performance optimizations */
+.optimize-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* GPU acceleration for smooth animations */

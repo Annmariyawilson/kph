@@ -12,7 +12,7 @@ import {
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative lg:min-h-[85vh] min-h-[600px] flex flex-col justify-between overflow-hidden bg-white">
+    <section id="hero" className="relative lg:min-h-[85vh] min-h-[500px] flex flex-col justify-between overflow-hidden bg-white">
 
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/50 z-10" />
@@ -36,7 +36,7 @@ const HeroSection = () => {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="container mx-auto px-4 relative z-30 flex-grow flex items-center pt-24 pb-12">
+      <div className="container mx-auto px-4 relative z-30 flex-grow flex items-center pt-20 pb-8 lg:pt-24 lg:pb-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full">
 
           {/* LEFT CONTENT: Simple & Catchy */}
@@ -49,7 +49,7 @@ const HeroSection = () => {
               </div>
 
               {/* Catchy Main Headline */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold leading-[0.9] tracking-tighter text-white uppercase">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold leading-[0.9] tracking-tighter text-white uppercase">
                 THE PAINT <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary">HOUSE</span>
               </h1>

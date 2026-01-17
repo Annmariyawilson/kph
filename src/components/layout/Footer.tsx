@@ -3,7 +3,7 @@ import { Phone, MapPin, ArrowUpRight, Facebook, Instagram, Linkedin, Building2, 
 
 const Footer = () => {
     return (
-        <footer className="bg-[#050505] text-white pt-24 pb-12 border-t-2 border-primary relative overflow-hidden">
+        <footer className="bg-[#050505] text-white pt-12 md:pt-24 pb-8 md:pb-12 border-t-2 border-primary relative overflow-hidden">
 
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />

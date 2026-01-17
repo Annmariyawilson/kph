@@ -14,7 +14,7 @@ const ShopGallerySection = () => {
     const marqueeImages = [...images, ...images, ...images];
 
     return (
-        <section id="showroom" className="py-20 bg-slate-50 relative overflow-hidden">
+        <section id="showroom" className="py-12 md:py-20 bg-slate-50 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]" />
 

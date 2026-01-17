@@ -33,7 +33,7 @@ const ServicesSection = () => {
     ];
 
     return (
-        <section id="services" className="pt-24 pb-0 bg-white relative overflow-hidden">
+        <section id="services" className="pt-12 md:pt-24 pb-0 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 {/* Minimalist Heading Block */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
