@@ -77,21 +77,21 @@ const Settings = () => {
 
     return (
         <AdminLayout>
-            <div className="max-w-4xl">
-                <div className="mb-8">
+            <div className="max-w-4xl space-y-8">
+                <div>
                     <h1 className="text-3xl font-black text-slate-900">
                         Settings
                     </h1>
                     <p className="text-slate-500 text-sm font-medium mt-2">
-                        Manage your account settings and preferences
+                        Manage your website configuration and account settings
                     </p>
                 </div>
 
                 {/* Password Change Section */}
                 <Card className="p-8 bg-white border-2 border-slate-200 shadow-sm">
                     <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <Lock className="w-6 h-6 text-primary" />
+                        <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center">
+                            <Lock className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
                             <h2 className="text-xl font-black text-slate-900">Change Password</h2>
@@ -114,7 +114,7 @@ const Settings = () => {
                                         onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
                                         placeholder="••••••••"
                                         required
-                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-primary transition-colors"
+                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-red-600 transition-colors"
                                     />
                                     <button
                                         type="button"
@@ -139,7 +139,7 @@ const Settings = () => {
                                         onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
                                         placeholder="••••••••"
                                         required
-                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-primary transition-colors"
+                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-red-600 transition-colors"
                                     />
                                     <button
                                         type="button"
@@ -164,7 +164,7 @@ const Settings = () => {
                                         onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
                                         placeholder="••••••••"
                                         required
-                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-primary transition-colors"
+                                        className="h-12 pl-12 pr-12 rounded-xl border-slate-200 focus:border-red-600 transition-colors"
                                     />
                                     <button
                                         type="button"
@@ -180,7 +180,7 @@ const Settings = () => {
                         <Button
                             type="submit"
                             disabled={loading}
-                            className="bg-primary hover:bg-red-700 text-white font-black rounded-xl shadow-lg shadow-red-100 transition-all uppercase tracking-wider"
+                            className="bg-red-600 hover:bg-red-700 text-white font-black rounded-xl shadow-lg shadow-red-100 transition-all uppercase tracking-wider"
                         >
                             {loading ? (
                                 <>

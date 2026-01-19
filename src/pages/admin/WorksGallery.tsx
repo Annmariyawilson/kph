@@ -425,7 +425,7 @@ const WorksGallery = () => {
                                 />
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div className="space-y-2">
                                     <Label htmlFor="location" className="text-xs font-black uppercase text-slate-400">Location</Label>
                                     <Input
@@ -445,6 +445,18 @@ const WorksGallery = () => {
                                         value={formData.sqft}
                                         onChange={(e) => setFormData({ ...formData, sqft: e.target.value })}
                                         placeholder="e.g. 2500 sq.ft"
+                                        className="h-12 rounded-xl"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="date" className="text-xs font-black uppercase text-slate-400">Completion Date</Label>
+                                    <Input
+                                        id="date"
+                                        type="date"
+                                        value={formData.completionDate ? formData.completionDate.split('T')[0] : ''}
+                                        onChange={(e) => setFormData({ ...formData, completionDate: e.target.value })}
+                                        required
                                         className="h-12 rounded-xl"
                                     />
                                 </div>

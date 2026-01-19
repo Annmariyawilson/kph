@@ -37,6 +37,24 @@ const ProjectDetails = () => {
     const [loading, setLoading] = useState(true);
     const [api, setApi] = useState<CarouselApi>();
     const [current, setCurrent] = useState(0);
+    const [defaultYear, setDefaultYear] = useState(new Date().getFullYear().toString());
+
+    useEffect(() => {
+        const fetchDefaultYear = async () => {
+            try {
+                const { data } = await supabase
+                    .from('site_settings' as any)
+                    .select('value')
+                    .eq('key', 'current_year')
+                    .single();
+
+                if (data) setDefaultYear((data as any).value);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+        fetchDefaultYear();
+    }, []);
 
     useEffect(() => {
         if (id) {
@@ -225,7 +243,7 @@ const ProjectDetails = () => {
                                         </div>
                                         <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Year</p>
                                         <p className="text-slate-900 font-bold">
-                                            {project.completion_date ? new Date(project.completion_date).getFullYear() : '2023'}
+                                            {project.completion_date ? new Date(project.completion_date).getFullYear() : defaultYear}
                                         </p>
                                     </div>
                                 </div>

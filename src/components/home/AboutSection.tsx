@@ -1,10 +1,13 @@
 import { Droplets, Shield, Palette, Award, Building2, Users, History, Store } from "lucide-react";
 
 const AboutSection = () => {
+  const currentYear = new Date().getFullYear();
+  const yearsLegacy = currentYear - 2000;
+
   const features = [
     {
       icon: History,
-      title: "23+ Years Legacy",
+      title: `${yearsLegacy}+ Years Legacy`,
       description: "Founded by Tomychen Kalangara, growing from a modest shop to a state-of-the-art studio.",
     },
     {
@@ -49,7 +52,7 @@ const AboutSection = () => {
                     <Award className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-white font-black text-xl leading-none uppercase tracking-tighter">23+ Years</p>
+                    <p className="text-white font-black text-xl leading-none uppercase tracking-tighter">{yearsLegacy}+ Years</p>
                     <p className="text-primary text-[10px] uppercase font-black tracking-[0.3em] mt-1">Of Excellence</p>
                   </div>
                 </div>
