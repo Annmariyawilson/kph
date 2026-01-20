@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
@@ -22,9 +23,34 @@ const SectionLoader = () => (
 );
 
 const Index = () => {
+  const location = useLocation();
+
   useEffect(() => {
     document.title = "Kalangara Paint House | Premium Paints & Design in Alappuzha";
-  }, []);
+
+    // Handle hash scrolling with retry for lazy loaded components
+    if (location.hash) {
+      const scrollToElement = () => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return true;
+        }
+        return false;
+      };
+
+      if (!scrollToElement()) {
+        const interval = setInterval(() => {
+          if (scrollToElement()) {
+            clearInterval(interval);
+          }
+        }, 100);
+
+        // Stop retrying after 3 seconds
+        setTimeout(() => clearInterval(interval), 3000);
+      }
+    }
+  }, [location]);
 
   return (
     <div className="min-h-screen bg-background">

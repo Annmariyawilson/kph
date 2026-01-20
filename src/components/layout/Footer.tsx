@@ -1,7 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Phone, MapPin, ArrowUpRight, Facebook, Instagram, Linkedin, Building2, Ticket, MessageCircle } from "lucide-react";
 
 const Footer = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleNavigation = (e: React.MouseEvent<HTMLElement>, href: string) => {
+        e.preventDefault();
+
+        // If it's not an anchor link, just navigate
+        if (!href.startsWith('#')) {
+            navigate(href);
+            return;
+        }
+
+        // If we're on the home page, scroll to element
+        if (location.pathname === '/') {
+            const element = document.querySelector(href);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            // If on another page, navigate to home with hash
+            navigate(`/${href}`);
+        }
+    };
+
     return (
         <footer className="bg-[#050505] text-white pt-12 md:pt-24 pb-8 md:pb-12 border-t-2 border-primary relative overflow-hidden">
 
@@ -33,7 +57,7 @@ const Footer = () => {
                             We are more than a paint shop. We are a legacy of color, quality, and community service in Kerala.
                         </p>
                         <button
-                            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={(e) => handleNavigation(e, '#contact')}
                             className="group flex items-center gap-4 bg-white text-black px-8 py-5 text-xs font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300"
                         >
                             <span>Book Consultation</span>
@@ -85,7 +109,7 @@ const Footer = () => {
                                 { name: "Contact Us", href: "#contact" }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <a href={link.href} onClick={(e) => { e.preventDefault(); document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="text-sm font-bold text-slate-400 hover:text-white hover:text-base transition-all flex items-center gap-2 group cursor-pointer">
+                                    <a href={link.href} onClick={(e) => handleNavigation(e, link.href)} className="text-sm font-bold text-slate-400 hover:text-white hover:text-base transition-all flex items-center gap-2 group cursor-pointer">
                                         <span className="w-1.5 h-1.5 bg-white/20 rounded-full group-hover:bg-primary transition-colors" />
                                         {link.name}
                                     </a>
