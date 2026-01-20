@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { DistrictSelect } from "@/components/ui/district-select";
 import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
@@ -150,11 +151,12 @@ const QuickContactForm = () => {
                                     <FormControl>
                                         <div className="group/input relative">
                                             <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary transition-all scale-y-0 group-focus-within/input:scale-y-100 z-10" />
-                                            <Input
-                                                {...field}
+                                            <DistrictSelect
+                                                value={field.value}
+                                                onValueChange={field.onChange}
+                                                isHero={true}
+                                                className="h-14 bg-white border border-black/20 rounded-none px-6 text-slate-900"
                                                 placeholder="DISTRICT*"
-                                                aria-label="District"
-                                                className="h-14 bg-white border border-black/20 rounded-none focus-visible:ring-1 focus-visible:ring-black focus-visible:border-black transition-all font-heading font-bold text-[13px] tracking-wider uppercase placeholder:text-slate-400 placeholder:text-[10px] placeholder:font-normal placeholder:tracking-[0.2em] px-6"
                                             />
                                         </div>
                                     </FormControl>

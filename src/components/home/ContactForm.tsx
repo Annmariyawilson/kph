@@ -30,6 +30,7 @@ import {
     Phone,
     ArrowRight,
 } from "lucide-react";
+import { DistrictSelect } from "@/components/ui/district-select";
 
 /* -------------------- Schema -------------------- */
 const formSchema = z.object({
@@ -152,7 +153,7 @@ Details: ${values.projectDetails || "N/A"}`;
                                 TODAY
                             </h2>
                             <p className="text-slate-600 font-medium leading-relaxed max-w-sm">
-                                Located in St. George Shopping Complex, Edathua. We are open for all your painting needs.
+                                We primarily serve customers in Alappuzha and Pathanamthitta, with a strong focus on delivering the best service in these regions.
                             </p>
                         </div>
 
@@ -219,24 +220,12 @@ Details: ${values.projectDetails || "N/A"}`;
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-xs font-bold uppercase tracking-widest text-slate-900">District</FormLabel>
-                                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                        <FormControl>
-                                                            <SelectTrigger className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900 data-[placeholder]:text-slate-400 hover:bg-slate-50 transition-colors">
-                                                                <SelectValue placeholder="Select District" />
-                                                            </SelectTrigger>
-                                                        </FormControl>
-                                                        <SelectContent className="rounded-none border border-black bg-white shadow-xl max-h-[300px] z-50">
-                                                            {["Alappuzha", "Pathanamthitta", "Kottayam", "Other"].map(dist => (
-                                                                <SelectItem
-                                                                    key={dist}
-                                                                    value={dist}
-                                                                    className="rounded-none cursor-pointer focus:bg-black focus:text-white data-[state=checked]:bg-slate-100 py-3 text-xs uppercase tracking-widest font-medium transition-colors"
-                                                                >
-                                                                    {dist}
-                                                                </SelectItem>
-                                                            ))}
-                                                        </SelectContent>
-                                                    </Select>
+                                                    <DistrictSelect
+                                                        value={field.value}
+                                                        onValueChange={field.onChange}
+                                                        className="h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900"
+                                                        placeholder="Select District"
+                                                    />
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
@@ -361,7 +350,7 @@ Details: ${values.projectDetails || "N/A"}`;
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

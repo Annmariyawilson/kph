@@ -1,4 +1,4 @@
-import { Store, Tag, Briefcase, MapPin, ArrowUpRight } from "lucide-react";
+import { Store, Tag, Briefcase, MapPin, ArrowUpRight, ShieldCheck } from "lucide-react";
 
 const WhyUsSection = () => {
   const services = [
@@ -131,14 +131,24 @@ const WhyUsSection = () => {
         </div>
 
         {/* Bottom Flow Graphic */}
-        <div className="mt-32 border-t border-white/5 pt-8 flex justify-between items-end opacity-50">
-          <div className="text-[10px] uppercase text-slate-600 tracking-widest max-w-[200px]">
-            We sell protection for your home.
+        <div className="mt-20 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+          <div className="flex items-center gap-4 group cursor-default">
+            <div className="p-3 bg-indigo-500/10 rounded-full border border-indigo-500/20 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/20 transition-all duration-500">
+              <ShieldCheck className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold mb-0.5">Our Promise</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-200 to-slate-400 font-heading font-medium text-xl tracking-wide group-hover:from-indigo-300 group-hover:via-purple-300 group-hover:to-indigo-300 transition-all duration-500">
+                We sell protection for your home.
+              </span>
+            </div>
           </div>
-          <div className="flex gap-2">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-            <div className="w-2 h-2 bg-indigo-500/50 rounded-full" />
-            <div className="w-2 h-2 bg-indigo-500/20 rounded-full" />
+
+          <div className="flex gap-2 opacity-50">
+            <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" />
+            <div className="w-1.5 h-1.5 bg-indigo-500/50 rounded-full" />
+            <div className="w-1.5 h-1.5 bg-indigo-500/20 rounded-full" />
           </div>
         </div>
 
