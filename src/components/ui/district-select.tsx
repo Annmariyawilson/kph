@@ -56,7 +56,7 @@ export function DistrictSelect({ value, onValueChange, className, placeholder = 
                         "w-full justify-between font-normal",
                         !value && "text-muted-foreground",
                         // Inherit styles from the parent or use default consistent with existing inputs
-                        "h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900 text-xs uppercase tracking-widest",
+                        "h-14 bg-white border border-slate-900 rounded-none focus:ring-1 focus:ring-black text-slate-900 text-xs uppercase tracking-widest hover:bg-white hover:text-slate-900",
                         // Specific overrides for 'Hero' style to match QuickContactForm if needed.
                         // QuickContactForm uses: border-black/20 font-heading font-bold text-[13px] tracking-wider
                         isHero && "border-black/20 font-heading font-bold text-[13px] tracking-wider placeholder:text-[10px] placeholder:font-normal placeholder:tracking-[0.2em]",

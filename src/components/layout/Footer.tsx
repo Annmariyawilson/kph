@@ -14,8 +14,12 @@ const Footer = () => {
             return;
         }
 
-        // If we're on the home page, scroll to element
+        // If we're on the home page, update URL and scroll
         if (location.pathname === '/') {
+            // Update URL hash without forcing a full page reload, but ensuring history fits
+            navigate(href);
+
+            // Manually scroll as well, in case the URL didn't change (already at #contact)
             const element = document.querySelector(href);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
