@@ -227,11 +227,18 @@ const QuickContactForm = () => {
                                             "Exterior Painting",
                                             "Waterproofing",
                                             "Full Home Makeover",
-                                            "Wood Polishing & Varnish",
+                                            "Wood Polishing & Varnishing",
                                             "Metal Painting",
-                                            "Texture Design & Stencils",
+                                            "Texture Design & Stenciling",
                                             "Wallpaper Installation",
-                                            "Damp Proofing Solution"
+                                            "Damp Proofing Solutions",
+                                            "New Paint Service",
+                                            "Repainting Services",
+                                            "Project-Based Painting Services",
+                                            "Plinth Area Painting & Protection",
+                                            "Floor Painting",
+                                            "Epoxy Metal Painting",
+                                            "Safe Paint Services"
                                         ].map(service => (
                                             <SelectItem key={service} value={service} className="rounded-none text-sm font-normal text-slate-700 cursor-pointer focus:bg-slate-900 focus:text-white">
                                                 {service}

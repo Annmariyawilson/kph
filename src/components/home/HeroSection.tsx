@@ -51,7 +51,7 @@ const HeroSection = () => {
               <div className="max-w-lg mt-6 mx-auto lg:mx-0">
                 <p className="font-sans text-sm sm:text-base lg:text-lg text-slate-600 leading-[1.8] font-light">
                   The <span className="text-black font-medium">only wholesale paint dealer</span> in Kuttanad. <br className="hidden sm:block" />
-                  We offer <span className="text-violet-700 font-medium decoration-violet-200 underline-offset-4 underline decoration-1">10-30% cash purchase discounts</span> on premium brands like Asian Paints, Berger, and JSW...
+                  We offer <span className="text-violet-700 font-medium decoration-violet-200 underline-offset-4 underline decoration-1">10–25% cash purchase discounts</span> on selected premium brands.
                 </p>
               </div>
             </div>

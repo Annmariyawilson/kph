@@ -258,7 +258,24 @@ Details: ${values.projectDetails || "N/A"}`;
                                                         </SelectTrigger>
                                                     </FormControl>
                                                     <SelectContent className="rounded-none border border-black bg-white shadow-xl max-h-[300px] z-50">
-                                                        {["Interior Painting", "Exterior Painting", "Waterproofing", "Full Home Makeover"].map(service => (
+                                                        {[
+                                                            "Interior Painting",
+                                                            "Exterior Painting",
+                                                            "Waterproofing",
+                                                            "Full Home Makeover",
+                                                            "Wood Polishing & Varnishing",
+                                                            "Metal Painting",
+                                                            "Texture Design & Stenciling",
+                                                            "Wallpaper Installation",
+                                                            "Damp Proofing Solutions",
+                                                            "New Paint Service",
+                                                            "Repainting Services",
+                                                            "Project-Based Painting Services",
+                                                            "Plinth Area Painting & Protection",
+                                                            "Floor Painting",
+                                                            "Epoxy Metal Painting",
+                                                            "Safe Paint Services"
+                                                        ].map(service => (
                                                             <SelectItem
                                                                 key={service}
                                                                 value={service}

@@ -1,4 +1,4 @@
-import { ArrowRight, Paintbrush, ShieldCheck, Droplets, ArrowUpRight, Truck, Phone, Palette, PaintRoller, Building2, HardHat, ClipboardCheck, Wrench, Briefcase } from "lucide-react";
+import { ArrowRight, Paintbrush, ShieldCheck, Droplets, ArrowUpRight, Truck, Phone, Palette, PaintRoller, Building2, HardHat, ClipboardCheck, Wrench, Briefcase, Sparkles, Layers, Shield } from "lucide-react";
 import ShopGallerySection from "./ShopGallerySection";
 
 const ServicesSection = () => {
@@ -44,6 +44,27 @@ const ServicesSection = () => {
             description: "Expert guidance on color selection, finishes, material choice, and maintenance to help you achieve the perfect look and longlasting results. We have a colour studio to tint over 2,500 Asian Paints shades for customers to choose from.",
             image: "/images/paint_consultation.png",
             icon: Palette
+        },
+        {
+            title: "Wood Polishing & Varnishing",
+            subtitle: "WOOD CARE",
+            description: "Enhance wooden surfaces with durable polishing and varnishing that protects against moisture, scratches, aging, and delivers a rich, lasting finish.",
+            image: "/images/services/wood_polishing.png",
+            icon: Sparkles
+        },
+        {
+            title: "Floor Painting Solutions",
+            subtitle: "DURABLE FLOORS",
+            description: "Apply durable, slip-resistant floor coatings for homes, commercial, and industrial spaces, ensuring protection, easy maintenance, and long-lasting performance.",
+            image: "/images/services/floor_painting_solutions.png",
+            icon: Layers
+        },
+        {
+            title: "Epoxy Metal Painting",
+            subtitle: "METAL PROTECTION",
+            description: "Protect metal surfaces with epoxy coatings that resist rust, corrosion, chemicals, and wear while delivering a smooth, long-lasting professional finish.",
+            image: "/images/services/epoxy_metal_painting.png",
+            icon: Shield
         }
     ];
 
